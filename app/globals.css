@@ -1,0 +1,430 @@
+@import 'tailwindcss';
+@import 'tw-animate-css';
+@import 'shadcn/tailwind.css';
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --font-heading: var(--font-cormorant), 'Georgia', serif;
+  --font-serif: var(--font-cormorant), 'Georgia', serif;
+  --font-sans: var(--font-jost), var(--font-geist-sans), 'Geist Fallback';
+  --font-mono: var(--font-geist-mono), 'Geist Mono Fallback';
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --color-foreground: var(--foreground);
+  --color-background: var(--background);
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+  --radius-4xl: calc(var(--radius) * 2.6);
+}
+
+:root {
+  /* 1990s Moody Luxury — deep atmospheric green, espresso brown, forest border, warm gold/champagne */
+  /* Theme tokens: deep green background, espresso cards, forest borders, gold accents */
+  --background: #0b1d12; /* Deep Atmospheric Dark Green */
+  --foreground: #f3ead7; /* Warm cream / champagne typography */
+  --card: #13261b; /* Rich Espresso Dark Brown / Green */
+  --card-foreground: #f3ead7;
+  --popover: #0e2216; /* Slightly deeper than card for layered popovers */
+  --popover-foreground: #f3ead7;
+  --primary: #ecd48c; /* Premium Warm Gold */
+  --primary-foreground: #0b1d12;
+  --secondary: #13261b; /* Espresso container */
+  --secondary-foreground: #f3ead7;
+  --muted: #18301f; /* Muted forest fill */
+  --muted-foreground: #c4ccb9; /* Soft sage cream for secondary text */
+  --accent: #ffc107; /* Gold accent */
+  --accent-foreground: #0b1d12;
+  --destructive: oklch(0.55 0.18 27);
+  --border: #2a3e31; /* Muted Forest Green border */
+  --input: #2a3e31;
+  --ring: #ffc107;
+  --chart-1: #ffc107;
+  --chart-2: #5a7a5f;
+  --chart-3: #2a3e31;
+  --chart-4: #d9b35a;
+  --chart-5: #18301f;
+  --radius: 0.25rem;
+  --sidebar: #0e2216;
+  --sidebar-foreground: #f3ead7;
+  --sidebar-primary: #ffc107;
+  --sidebar-primary-foreground: #0b1d12;
+  --sidebar-accent: #13261b;
+  --sidebar-accent-foreground: #f3ead7;
+  --sidebar-border: #2a3e31;
+  --sidebar-ring: #ffc107;
+}
+
+.dark {
+  --background: oklch(0.145 0 0);
+  --foreground: oklch(0.985 0 0);
+  --card: oklch(0.205 0 0);
+  --card-foreground: oklch(0.985 0 0);
+  --popover: oklch(0.205 0 0);
+  --popover-foreground: oklch(0.985 0 0);
+  --primary: oklch(0.922 0 0);
+  --primary-foreground: oklch(0.205 0 0);
+  --secondary: oklch(0.269 0 0);
+  --secondary-foreground: oklch(0.985 0 0);
+  --muted: oklch(0.269 0 0);
+  --muted-foreground: oklch(0.708 0 0);
+  --accent: oklch(0.269 0 0);
+  --accent-foreground: oklch(0.985 0 0);
+  --destructive: oklch(0.704 0.191 22.216);
+  --border: oklch(1 0 0 / 10%);
+  --input: oklch(1 0 0 / 15%);
+  --ring: oklch(0.556 0 0);
+  --chart-1: oklch(0.87 0 0);
+  --chart-2: oklch(0.556 0 0);
+  --chart-3: oklch(0.439 0 0);
+  --chart-4: oklch(0.371 0 0);
+  --chart-5: oklch(0.269 0 0);
+  --sidebar: oklch(0.205 0 0);
+  --sidebar-foreground: oklch(0.985 0 0);
+  --sidebar-primary: oklch(0.488 0.243 264.376);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.269 0 0);
+  --sidebar-accent-foreground: oklch(0.985 0 0);
+  --sidebar-border: oklch(1 0 0 / 10%);
+  --sidebar-ring: oklch(0.556 0 0);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+  html {
+    @apply font-sans;
+    scroll-behavior: smooth;
+  }
+}
+
+@layer utilities {
+  .font-heading {
+    font-family: var(--font-heading);
+  }
+  .tracking-luxe {
+    letter-spacing: 0.32em;
+  }
+  .tracking-wide-sm {
+    letter-spacing: 0.18em;
+  }
+}
+
+/* ── Continuous marquee ticker ── */
+@keyframes marquee {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+.animate-marquee {
+  animation: marquee 30s linear infinite;
+  white-space: nowrap;
+}
+
+/* ── Buttery fade / rise reveal ── */
+@keyframes fadeRise {
+  0%   { opacity: 0; transform: translateY(28px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+.reveal { opacity: 0; }
+.reveal.in-view {
+  animation: fadeRise 0.9s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+.animate-fade-in {
+  animation: fadeIn 0.5s ease forwards;
+}
+
+@keyframes scaleIn {
+  from { opacity: 0; transform: scale(0.96) translateY(10px); }
+  to   { opacity: 1; transform: scale(1) translateY(0); }
+}
+.animate-scale-in {
+  animation: scaleIn 0.35s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+/* ── Navigation link underline glow ── */
+.nav-link {
+  position: relative;
+  transition: color 0.4s ease;
+}
+.nav-link::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+  height: 1px;
+  width: 0;
+  background: var(--primary);
+  box-shadow: 0 0 8px var(--primary);
+  transition: width 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.nav-link:hover::after,
+.nav-link.active::after { width: 100%; }
+
+/* ── Gold separator ── */
+.gold-line {
+  height: 1px;
+  background: linear-gradient(to right, transparent, var(--primary), transparent);
+}
+
+/* ── Asymmetric Grid Helpers ── */
+.catalog-offset-col { margin-top: 2.5rem; }
+
+/* ── Service card hover glow ── */
+.service-card-glow {
+  box-shadow: 0 8px 32px oklch(0.74 0.11 80 / 0.08);
+}
+
+/* ── Booking wizard slide animations ── */
+@keyframes wizardStep {
+  from { opacity: 0; transform: translateX(16px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+.wizard-step-enter {
+  animation: wizardStep 0.35s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+/* ── Smooth scrollbar theming ── */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: oklch(0.21 0.028 155); }
+::-webkit-scrollbar-thumb {
+  background: oklch(0.38 0.035 140);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover { background: oklch(0.74 0.11 80 / 0.6); }
+
+/* ── Horizontal product strip hover ── */
+.product-strip-item { transition: background 0.3s ease; }
+
+/* ── Reservation dashboard entry ── */
+@keyframes dashboardReveal {
+  from { opacity: 0; transform: translateY(-12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.dashboard-reveal {
+  animation: dashboardReveal 0.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+/* ── Hero slide captions ── */
+@keyframes captionFade {
+  0%, 100% { opacity: 0; transform: translateY(6px); }
+  15%, 85%  { opacity: 1; transform: translateY(0); }
+}
+.slide-caption {
+  animation: captionFade 5.5s ease-in-out infinite;
+}
+
+/* ── Gold shimmer on primary elements ── */
+@keyframes goldShimmer {
+  0%   { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+.text-shimmer {
+  background: linear-gradient(
+    90deg,
+    oklch(0.74 0.11 80) 0%,
+    oklch(0.88 0.14 82) 40%,
+    oklch(0.74 0.11 80) 60%,
+    oklch(0.65 0.09 80) 100%
+  );
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: goldShimmer 4s linear infinite;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   REVIEW ENGINE — Dynamic layout expansion rules
+   Ensures the review wall never clips or overlaps adjacent
+   sections regardless of review count or text length.
+   ═══════════════════════════════════════════════════════════ */
+
+/* Review form input styling */
+.review-input {
+  width: 100%;
+  font-family: var(--font-sans);
+  font-size: 0.875rem;
+  color: var(--foreground);
+  background: oklch(0.23 0.026 155 / 0.7);
+  border: 1px solid oklch(0.38 0.035 140 / 45%);
+  transition: border-color 0.25s ease, background 0.25s ease;
+}
+.review-input:focus {
+  outline: none;
+  border-color: oklch(0.74 0.11 80 / 0.6);
+  background: oklch(0.23 0.026 155 / 0.9);
+}
+.review-input::placeholder {
+  color: oklch(0.72 0.025 90 / 0.45);
+}
+
+/* Sticky form wrapper — clears on all viewport heights */
+.review-form-wrapper {
+  position: sticky;
+  top: 2rem;
+  /* Ensure it never overflows on short screens */
+  max-height: calc(100vh - 4rem);
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: oklch(0.38 0.035 140) transparent;
+}
+
+/* ── Review masonry wall ──
+   Uses CSS columns on ≥640px for a true masonry-style cascade.
+   Falls back to single column on mobile.
+   Height is fully content-driven — no fixed heights that can clip.
+   ── */
+.review-wall {
+  /* The wall is a normal block container; no fixed height.
+     Content pushes the parent section downward naturally. */
+  width: 100%;
+}
+
+.review-masonry {
+  /* CSS column masonry — the most reliable cross-browser approach */
+  columns: 1;
+  column-gap: 1rem;
+  width: 100%;
+}
+
+@media (min-width: 640px) {
+  .review-masonry {
+    columns: 2;
+  }
+}
+
+/* Each card breaks correctly inside the column flow */
+.review-card {
+  break-inside: avoid;
+  page-break-inside: avoid;
+  /* Bottom margin replaces gap (column layouts use margin, not gap) */
+  margin-bottom: 1rem;
+  /* Allow card to grow to its natural height — no min/max that clips */
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+/* New review slide-in animation */
+@keyframes reviewEnter {
+  from {
+    opacity: 0;
+    transform: translateY(-10px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+.review-card {
+  animation: reviewEnter 0.4s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   PRODUCT CATALOG — Image frame ratios & card structure
+   ═══════════════════════════════════════════════════════════ */
+
+/* Image container with a locked 4:3 aspect ratio.
+   overflow:hidden ensures no image ever bleeds outside.
+   The image inside is object-cover so it never distorts. */
+.product-img-frame {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  /* aspect-ratio is set inline via style prop for flexibility */
+  background: oklch(0.25 0.03 155);
+}
+
+/* Ensure product cards in the grid never collapse */
+.product-img-frame img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   AUTH GATE — Review submission lock overlay
+   ═══════════════════════════════════════════════════════════ */
+
+/* The gate fills the form panel cleanly, no fixed heights */
+.auth-gate {
+  width: 100%;
+  /* Let content determine height — no min-height clipping */
+}
+
+/* Subtle inner glow behind the lock icon */
+.auth-gate .lock-glow {
+  box-shadow: 0 0 24px oklch(0.74 0.11 80 / 0.08);
+}
+
+/* ═══════════════════════════════════════════════════════════
+   ENQUIRE MODAL — Product-specific inquiry drawer
+   ═══════════════════════════════════════════════════════════ */
+
+/* Ping animation for the success ripple ring */
+@keyframes enquirePing {
+  0%   { transform: scale(1);   opacity: 0.6; }
+  75%  { transform: scale(1.8); opacity: 0; }
+  100% { transform: scale(1.8); opacity: 0; }
+}
+.animate-ping {
+  animation: enquirePing 1.4s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+
+/* Contact method tab — active indicator line */
+.contact-tab-active {
+  position: relative;
+}
+.contact-tab-active::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: var(--primary);
+}
