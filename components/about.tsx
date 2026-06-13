@@ -16,6 +16,38 @@ type Pillar = {
   cta: string
 }
 
+export function about() {
+  const team = [
+    { name: "Name One", image: "member1.jpg" },
+    { name: "Name Two", image: "member2.jpg" },
+    { name: "Name Three", image: "member3.jpg" },
+  ]
+
+  return (
+    <section id="about" className="py-24 bg-background">
+      <div className="mx-auto max-w-7xl px-8">
+        <h2 className="font-heading text-4xl mb-12 text-center">About Our Team</h2>
+        
+        {/* Team Grid */}
+        <div className="grid md:grid-cols-3 gap-8">
+          {team.map((member, i) => (
+            <div key={i} className="flex flex-col items-center">
+              <div className="w-full aspect-[3/4] overflow-hidden border border-border bg-muted mb-4">
+                <img 
+                  src={member.image} 
+                  alt={member.name} 
+                  className="w-full h-full object-cover"
+                />
+              </div>
+              <h3 className="font-heading text-xl">{member.name}</h3>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  )
+}
+
 const pillars: Pillar[] = [
   {
     icon: HeartPulse,
