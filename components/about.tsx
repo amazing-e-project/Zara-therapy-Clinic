@@ -3,11 +3,12 @@
 import { useState } from "react"
 import { Reveal } from "@/components/reveal"
 import { Leaf, HeartPulse, Sparkles, Activity, X, ArrowUpRight } from "lucide-react"
+import { PhilosophyModal } from "@/components/philosophy-modal"
 
 type FocusArea = { title: string; desc: string }
 
 type Pillar = {
-  icon: typeof HeartPulse
+  icon: React.ElementType
   title: string
   text: string
   headline: string
@@ -72,7 +73,7 @@ const pillars: Pillar[] = [
 ]
 
 export function About() {
-  const [active, setActive] = useState<Pillar | null>(null)
+  const [active, setActive] = useState<Pillar | null>(null);
 
   const team = [
     { name: "Dennies Jairo", image: "/images/member1.jpeg" },
@@ -83,8 +84,7 @@ export function About() {
   return (
     <section id="about" className="relative py-28 bg-background">
       <div className="mx-auto max-w-7xl px-8">
-        {/* Team Grid */}
-        <h2 className="font-heading text-4xl mb-12 text-center">About Our Team</h2>
+        <h2 className="font-heading text-4xl mb-12 text-center">Our Team</h2>
         <div className="grid md:grid-cols-3 gap-8 mb-24">
           {team.map((member, i) => (
             <div key={i} className="flex flex-col items-center">
@@ -96,7 +96,6 @@ export function About() {
           ))}
         </div>
 
-        {/* Philosophy Section */}
         <div className="grid items-center gap-14 lg:grid-cols-2">
           <Reveal>
             <div>
@@ -131,36 +130,7 @@ export function About() {
           </div>
         </div>
       </div>
-
       {active && <PhilosophyModal pillar={active} onClose={() => setActive(null)} />}
     </section>
-  )
-}
-
-function PhilosophyModal({ pillar, onClose }: { pillar: Pillar; onClose: () => void }) {
-  return (
-    <div className="fixed inset-0 z-[100] flex items-center justify-center bg-background/80 p-4 backdrop-blur-sm animate-fade-in" onClick={onClose}>
-      <div className="animate-scale-in relative max-h-[90vh] w-full max-w-2xl overflow-y-auto border border-border bg-card p-8 shadow-2xl sm:p-12" onClick={(e) => e.stopPropagation()}>
-        <button onClick={onClose} className="absolute right-5 top-5 text-muted-foreground hover:text-primary"><X className="h-5 w-5" /></button>
-        <div className="flex items-center gap-3">
-          <pillar.icon className="h-6 w-6 text-primary" />
-          <p className="text-[11px] tracking-luxe text-primary uppercase">{pillar.title}</p>
-        </div>
-        <h2 className="font-heading mt-4 text-3xl sm:text-4xl">{pillar.headline}</h2>
-        <div className="gold-line mt-5 w-16" />
-        <p className="mt-6 text-muted-foreground">{pillar.intro}</p>
-        <p className="mt-9 text-[11px] tracking-luxe text-primary uppercase">Our Specific Focus Areas</p>
-        <ul className="mt-5 flex flex-col gap-5">
-          {pillar.focusAreas.map((area) => (
-            <li key={area.title} className="border-l border-primary/40 pl-5">
-              <h3 className="font-heading text-lg">{area.title}</h3>
-              <p className="mt-1.5 text-sm text-muted-foreground">{area.desc}</p>
-            </li>
-          ))}
-        </ul>
-        <div className="gold-line mt-9 w-full opacity-40" />
-        <p className="mt-6 font-heading text-lg">{pillar.cta}</p>
-      </div>
-    </div>
   )
 }
